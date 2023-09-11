@@ -20,12 +20,19 @@ public class Task {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String titulo;
+    private String title;
 
-    private String descricao;
+    private String description;
 
-    private LocalDateTime dataDeVencimento;
+    private LocalDateTime duedate;
 
-    private Boolean concluida;
+    private Boolean completed;
 
+    public Task(TaskRegisterData data) {
+
+        this.title = data.title();
+        this.description = data.description();
+        this.duedate = data.duedate();
+        this.completed = false;
+    }
 }
