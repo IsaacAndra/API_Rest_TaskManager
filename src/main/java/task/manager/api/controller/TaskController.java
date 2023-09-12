@@ -4,15 +4,9 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-import task.manager.api.domain.task.Task;
-import task.manager.api.domain.task.TaskDetailingData;
-import task.manager.api.domain.task.TaskRegisterData;
-import task.manager.api.domain.task.TaskRepository;
+import task.manager.api.domain.task.*;
 
 @RequestMapping("tasks")
 @RestController
@@ -31,6 +25,16 @@ public class TaskController {
 
         return ResponseEntity.created(uri).body(new TaskDetailingData(task));
 
+    }
+
+    @PutMapping
+    @Transactional
+    public ResponseEntity editTask(@RequestBody @Valid EditionTaskData data){
+        var task = repository.getReferenceById(data.id());
+
+        task.updateTask(data);
+
+        return ResponseEntity.ok(new TaskDetailingData(task));
     }
 
 }
