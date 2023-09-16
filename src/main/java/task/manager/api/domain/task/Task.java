@@ -52,4 +52,9 @@ public class Task {
         }
 
     }
+
+    public void delete() {
+        this.completed = true;
+
+    }
 }
