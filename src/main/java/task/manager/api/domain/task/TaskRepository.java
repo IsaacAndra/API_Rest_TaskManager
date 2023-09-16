@@ -8,5 +8,6 @@ import java.util.Optional;
 
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
-    Page<Task> findAllByCompletedFalse(Pageable paginacao);
+    Page<Task> findAllByCompletedFalse(Pageable pagination);
+
 }

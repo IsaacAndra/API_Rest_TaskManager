@@ -11,7 +11,6 @@ public record EditionTaskData(
         String description,
         @NotNull
         LocalDateTime duedate,
-        @NotNull
         Boolean completed
 
 ) {
