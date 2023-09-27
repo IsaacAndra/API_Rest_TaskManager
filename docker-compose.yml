@@ -1,0 +1,9 @@
+version: 'latest'
+services:
+  mysql:
+    image: mysql:8.0.33
+    environment:
+      MYSQL_DATABASE: taskmanager_api
+      MYSQL_ROOT_PASSWORD: em8S8wZY0OZyS52801Sh
+    ports:
+      - "3306:3306"
